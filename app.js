@@ -14,6 +14,8 @@ window.onload = function () {
   }, 1000 / fps);
 };
 
+
+// MOVES BALL BACK AND FOURTH
 function moveEverything() {
   ballX = ballX + ballSpeedX;
   if(ballX < 0) {
@@ -24,6 +26,8 @@ function moveEverything() {
   }
 }
 
+// THIS FUNCTION IS CALLED IN OUR
+// drawEverything() TO DRAW OUR CANVAS AND GAME COMPONENTS
 function colorRect(leftX,topY,width,height,drawColor) {
     ctx.fillStyle = drawColor;
     ctx.fillRect(leftX,topY,width,height);
@@ -31,7 +35,16 @@ function colorRect(leftX,topY,width,height,drawColor) {
 }
 
 function drawEverything() {
-    colorRect(0,0,canvas.width, canvas.height,'black')
-    colorRect(0, 210, 10, 100,'white');
-    colorRect(ballX, 100, 10, 10,'red');
+    // GAME CANVAS
+    colorRect(0,0,canvas.width, canvas.height,'#000')
+
+    // LEFT PADDLE
+    colorRect(0, 210, 10, 100,'#fff');
+
+    // BALL
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(ballX,100,10,10)
+    ctx.beginPath();
+    ctx.arc(ballX, 100 ,10 ,0 ,Math.PI*2 ,true);
+    stroke();
 }
