@@ -1,11 +1,11 @@
 let canvas;
 let ctx;
 let ballX = 50;
-let ballSpeedX = 15;
+let ballSpeedX = 10;
 
 window.onload = function () {
-  canvas = document.getElementById("canvas");
-  ctx = canvas.getContext("2d");
+  canvas = document.getElementById('canvas');
+  ctx = canvas.getContext('2d');
 
   let fps = 30;
   setInterval(() => {
@@ -24,13 +24,14 @@ function moveEverything() {
   }
 }
 
+function colorRect(leftX,topY,width,height,drawColor) {
+    ctx.fillStyle = drawColor;
+    ctx.fillRect(leftX,topY,width,height);
+  
+}
+
 function drawEverything() {
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 210, 10, 100);
-
-  ctx.fillStyle = "red";
-  ctx.fillRect(ballX, 100, 10, 10);
+    colorRect(0,0,canvas.width, canvas.height,'black')
+    colorRect(0, 210, 10, 100,'white');
+    colorRect(ballX, 100, 10, 10,'red');
 }
