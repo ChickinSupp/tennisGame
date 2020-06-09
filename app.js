@@ -42,9 +42,10 @@ function drawEverything() {
     colorRect(0, 210, 10, 100,'#fff');
 
     // BALL
-    ctx.fillStyle = '#FF0000';
-    ctx.fillRect(ballX,100,10,10)
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(ballX,50,10,10)
     ctx.beginPath();
     ctx.arc(ballX, 100 ,10 ,0 ,Math.PI*2 ,true);
     stroke();
 }
+
