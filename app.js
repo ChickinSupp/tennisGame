@@ -1,7 +1,11 @@
 let canvas;
 let canvasContext;
 let ballX = 50;
+let ballY = 50;
 let ballSpeedX = 10;
+let ballSpeedY = 4;
+
+
 
 window.onload = function() {
 	canvas = document.getElementById('canvas');
@@ -15,12 +19,20 @@ window.onload = function() {
 }
 
 function moveEverything() {
-	ballX = ballX + ballSpeedX;
+  ballX = ballX + ballSpeedX;
+  ballY= ballY + ballSpeedY;
+
 	if(ballX < 0) {
 		ballSpeedX = -ballSpeedX;
 	}
 	if(ballX > canvas.width) {
 		ballSpeedX = -ballSpeedX;
+	}
+	if(ballY < 0) {
+		ballSpeedY = -ballSpeedY;
+	}
+	if(ballY > canvas.height) {
+		ballSpeedY = -ballSpeedY;
 	}
 }
 
@@ -32,7 +44,7 @@ function drawEverything() {
 	colorRect(0,210,10,100,'#fff');
 
 	// next line draws the ball
-	colorCircle(ballX, 150, 10, 'white');
+	colorCircle(ballX, ballY, 10, '#fff');
 }
 
 function colorCircle(centerX, centerY, radius, drawColor) {
@@ -46,3 +58,4 @@ function colorRect(leftX,topY, width,height, drawColor) {
 	canvasContext.fillStyle = drawColor;
 	canvasContext.fillRect(leftX,topY, width,height);
 }
+
