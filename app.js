@@ -81,3 +81,8 @@ function colorRect(leftX,topY, width,height, drawColor) {
 	canvasContext.fillRect(leftX,topY, width,height);
 }
 
+function ballPos() {
+
+  
+}
+
