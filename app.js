@@ -2,7 +2,7 @@ let canvas;
 let canvasContext;
 let ballX = 50;
 let ballY = 50;
-let ballSpeedX = 10;
+let ballSpeedX = 15;
 let ballSpeedY = 4;
 
 let paddle1Y = 250;
@@ -29,11 +29,16 @@ window.onload = () => {
 			drawEverything();	
 		}, 1000/framesPerSecond);
 
-	canvas.addEventListener('mousemove',
-		function(evt) {
+	canvas.addEventListener('mousemove', evt => {
 			let mousePos = calculateMousePos(evt);
 			paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
 		});
+}
+
+function ballReset() {
+  ballX = canvas.width/2;
+  ballY = canvas.height/2;
+   ballSpeedX = -ballSpeedX;
 }
 
 function moveEverything() {
@@ -41,7 +46,7 @@ function moveEverything() {
 	ballY = ballY + ballSpeedY;
 	
 	if(ballX < 0) {
-		ballSpeedX = -ballSpeedX;
+    ballReset()
 	}
 	if(ballX > canvas.width) {
 		ballSpeedX = -ballSpeedX;
