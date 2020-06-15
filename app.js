@@ -56,7 +56,11 @@ function moveEverything() {
     }
   }
   if (ballX > canvas.width) {
-    ballSpeedX = -ballSpeedX;
+    if (ballY > paddle2Y && ballY < paddle2Y + PADDLE_HEIGHT) {
+      ballSpeedX = -ballSpeedX;
+    } else {
+      ballReset();
+    }
   }
   if (ballY < 0) {
     ballSpeedY = -ballSpeedY;
@@ -74,7 +78,7 @@ function drawEverything() {
   colorRect(0, paddle1Y, PADDLE_THICKNESS, PADDLE_HEIGHT, "#fff");
 
   // this is right player paddle
-  colorRect(canvas.width-PADDLE_THICKNESS, paddle2Y, 10, PADDLE_THICKNESS, "#fff");
+  colorRect(canvas.width-PADDLE_THICKNESS, paddle2Y, PADDLE_THICKNESS, PADDLE_HEIGHT, "#fff");
 
   // next line draws the ball
   colorCircle(ballX, ballY, 10, "#fff");
