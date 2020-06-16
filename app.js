@@ -10,8 +10,10 @@ let player2Score = 0;
 
 let paddle1Y = 250;
 let paddle2Y = 250;
+
 const PADDLE_THICKNESS = 10;
 const PADDLE_HEIGHT = 100;
+const WINNING_SCORE = 3;
 
 function calculateMousePos(evt) {
 	let rect = canvas.getBoundingClientRect();
@@ -42,6 +44,11 @@ window.onload = function() {
 }
 
 function ballReset() {
+  if(player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE) {
+    player1Score = 0;
+    player2Score = 0;
+  }
+
 	ballSpeedX = -ballSpeedX;
 	ballX = canvas.width/2;
 	ballY = canvas.height/2;
@@ -73,8 +80,9 @@ function moveEverything() {
       ballSpeedY = deltaY * 0.35;
 
 		} else {
+      player2Score++; // must be before ball reset
 			ballReset();
-			player2Score++;
+			
 		}
 	}
 	if(ballX > canvas.width) {
