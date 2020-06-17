@@ -11,6 +11,8 @@ let player2Score = 0;
 let paddle1Y = 250;
 let paddle2Y = 250;
 
+let  showWin = false;
+
 const PADDLE_THICKNESS = 10;
 const PADDLE_HEIGHT = 100;
 const WINNING_SCORE = 3;
@@ -47,6 +49,7 @@ function ballReset() {
   if(player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE) {
     player1Score = 0;
     player2Score = 0;
+    showWin = true;
   }
 
 	ballSpeedX = -ballSpeedX;
@@ -64,6 +67,9 @@ function computerMovement() {
 }
 
 function moveEverything() {
+  if(showWin) {
+    return;
+  }
 	computerMovement();
 
 	ballX = ballX + ballSpeedX;
@@ -106,8 +112,13 @@ function moveEverything() {
 }
 
 function drawEverything() {
+
 	// next line blanks out the screen with black
-	colorRect(0,0,canvas.width,canvas.height,'black');
+  colorRect(0,0,canvas.width,canvas.height,'black');
+  if(showWin) {
+    canvasContext.fillText('click to continue', 100, 100);
+    return;
+  }
 
 	// this is left player paddle
 	colorRect(0,paddle1Y,PADDLE_THICKNESS,PADDLE_HEIGHT,'white');
