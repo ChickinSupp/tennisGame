@@ -116,6 +116,7 @@ function drawEverything() {
 	// next line blanks out the screen with black
   colorRect(0,0,canvas.width,canvas.height,'black');
   if(showWin) {
+    canvasContext.fillStyle = '#fff'
     canvasContext.fillText('click to continue', 100, 100);
     return;
   }
